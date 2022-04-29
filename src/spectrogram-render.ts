@@ -266,19 +266,16 @@ export class SpectrogramGPURenderer {
 
     public updateParameters(parameters: Partial<RenderParameters>) {
         const newParameters: RenderParameters = {
-            contrast: merge(parameters.contrast, this.parameters?.contrast, 25),
-            sensitivity: merge(parameters.sensitivity, this.parameters?.sensitivity, 25),
-            zoom: merge(parameters.zoom, this.parameters?.zoom, 4),
-            minFrequencyHz: merge(parameters.minFrequencyHz, this.parameters?.minFrequencyHz, 10),
-            maxFrequencyHz: merge(
+            contrast: parameters.contrast,
+            sensitivity: parameters.sensitivity,
+            zoom: parameters.zoom,
+            minFrequencyHz: parameters.minFrequencyHz,
+            maxFrequencyHz:
                 parameters.maxFrequencyHz,
-                this.parameters?.maxFrequencyHz,
-                12000
-            ),
-            sampleRate: merge(parameters.sampleRate, this.parameters?.sampleRate, 48000),
-            windowSize: merge(parameters.windowSize, this.parameters?.windowSize, 4096),
-            scale: merge(parameters.scale, this.parameters?.scale, 'mel'),
-            gradient: merge(parameters.gradient, this.parameters?.gradient, HEATED_METAL_GRADIENT),
+            sampleRate: parameters.sampleRate,
+            windowSize: parameters.windowSize,
+            scale: parameters.scale,
+            gradient: parameters.gradient,
         };
 
         if (this.parameters === null || this.parameters.gradient !== newParameters.gradient) {
