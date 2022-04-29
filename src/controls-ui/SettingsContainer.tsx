@@ -132,6 +132,20 @@ export interface SettingsContainerProps {
 
 export type SettingsContainer = (props: SettingsContainerProps) => JSX.Element;
 
+// function initSound(url: string): ArrayBuffer {
+//     return fetch(url)
+//         .then(resp => resp.arrayBuffer());
+// }
+
+
+async function initSound(url: string) {
+    const response = await fetch(url);
+    return response.arrayBuffer();
+}
+
+
+
+
 function generateSettingsContainer(): [SettingsContainer, (playState: PlayState) => void] {
     let setPlayStateExport: ((playState: PlayState) => void) | null = null;
 
@@ -161,7 +175,7 @@ function generateSettingsContainer(): [SettingsContainer, (playState: PlayState)
 
         const onInnerPaperClick = useCallback((e: MouseEvent) => e.stopPropagation(), []);
 
-        const fileRef = useRef<HTMLInputElement | null>(null);
+        // const fileRef = useRef<HTMLInputElement | null>(null);
 
         const [playState, setPlayState] = useState<PlayState>('stopped');
         const [SensitivitySlider, setSensitivity] = useMemo(generateLabelledSlider, []);
@@ -174,37 +188,41 @@ function generateSettingsContainer(): [SettingsContainer, (playState: PlayState)
             setPlayState('loading-mic');
             onRenderFromMicrophone();
         }, [onRenderFromMicrophone, setPlayState]);
+
         const onPlayFileClick = useCallback(() => {
-            if (fileRef.current === null) {
-                return;
-            }
-            fileRef.current.click();
-        }, [fileRef]);
-        const onFileChange = useCallback(() => {
-            if (
-                fileRef.current === null ||
-                fileRef.current.files === null ||
-                fileRef.current.files.length !== 1
-            ) {
-                return;
-            }
 
-            const file = fileRef.current.files[0];
-            const reader = new FileReader();
             setPlayState('loading-file');
-            reader.addEventListener('load', () => {
-                if (fileRef.current !== null) {
-                    fileRef.current.value = '';
-                }
 
-                if (reader.result instanceof ArrayBuffer) {
-                    onRenderFromFile(reader.result);
-                } else {
-                    setPlayState('stopped');
-                }
-            });
-            reader.readAsArrayBuffer(file);
-        }, [fileRef, setPlayState, onRenderFromFile]);
+            initSound("348.wav").then(response => onRenderFromFile(response))
+
+
+        }, [setPlayState, onRenderFromFile]);
+
+        // const onFileChange = useCallback(() => {
+        //     if (
+        //         fileRef.current === null ||
+        //         fileRef.current.files === null ||
+        //         fileRef.current.files.length !== 1
+        //     ) {
+        //         return;
+        //     }
+
+        //     const file = fileRef.current.files[0];
+        //     const reader = new FileReader();
+        //     setPlayState('loading-file');
+        //     reader.addEventListener('load', () => {
+        //         if (fileRef.current !== null) {
+        //             fileRef.current.value = '';
+        //         }
+
+        //         if (reader.result instanceof ArrayBuffer) {
+        //             onRenderFromFile(reader.result);
+        //         } else {
+        //             setPlayState('stopped');
+        //         }
+        //     });
+        //     reader.readAsArrayBuffer(file);
+        // }, [fileRef, setPlayState, onRenderFromFile]);
         const onStopClick = useCallback(() => {
             onStop();
             setPlayState('stopped');
@@ -311,13 +329,13 @@ function generateSettingsContainer(): [SettingsContainer, (playState: PlayState)
                         <CircularProgress size={24} className={classes.buttonProgress} />
                     )}
                 </div>
-                <input
+                {/* <input
                     type="file"
                     style={{ display: 'none' }}
                     accept="audio/x-m4a,audio/*"
                     onChange={onFileChange}
                     ref={fileRef}
-                />
+                /> */}
                 <div className={classes.buttonContainer}>
                     <Button
                         fullWidth
