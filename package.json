@@ -3,19 +3,21 @@
   "version": "1.0.0",
   "description": "Real-time audio spectrogram generator for the web.",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode=production",
     "start": "webpack serve --mode=development",
     "prettier": "prettier --write 'src/**/*.{ts,tsx}'",
     "type-check": "tsc"
   },
-  "author": "Caleb Joseph (https://github.com/calebj0seph)",
+  "author": "Nilo M. Recalde (https://github.com/nilomr)",
   "license": "MIT",
-  "homepage": "https://github.com/calebj0seph/spectro",
+  "homepage": "https://nilomr.github.io/DawnChorus",
   "bugs": "https://github.com/calebj0seph/spectro/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/calebj0seph/spectro.git"
+    "url": "https://github.com/nilomr/DawnChorus.git"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
@@ -46,6 +48,7 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-restricted-globals": "^0.2.0",
+    "gh-pages": "^3.2.3",
     "prettier": "^2.2.1",
     "typescript": "^3.7.7",
     "webpack": "^4.46.0",
