@@ -124,9 +124,7 @@ export type PlayState = 'stopped' | 'loading-file' | 'loading-mic' | 'playing';
 
 export interface SettingsContainerProps {
     onStop: () => void;
-    onClearSpectrogram: () => void;
     onRenderParametersUpdate: (settings: Partial<RenderParameters>) => void;
-    onRenderFromMicrophone: () => void;
     onRenderFromFile: (file: ArrayBuffer) => void;
 }
 
@@ -151,17 +149,15 @@ function generateSettingsContainer(): [SettingsContainer, (playState: PlayState)
 
     const SettingsContainer = ({
         onStop,
-        onClearSpectrogram,
         onRenderParametersUpdate,
-        onRenderFromMicrophone,
         onRenderFromFile,
     }: SettingsContainerProps) => {
         const { current: defaultParameters } = useRef({
-            sensitivity: 0.5,
-            contrast: 0.5,
+            sensitivity: 0.8,
+            contrast: 0.2,
             zoom: 4,
-            minFrequency: 10,
-            maxFrequency: 12000,
+            minFrequency: 500,
+            maxFrequency: 13000,
             scale: 'mel' as Scale,
             gradient: 'Heated Metal',
         });
@@ -184,45 +180,13 @@ function generateSettingsContainer(): [SettingsContainer, (playState: PlayState)
         const [MinFrequencySlider, setMinFrequency] = useMemo(generateLabelledSlider, []);
         const [MaxFrequencySlider, setMaxFrequency] = useMemo(generateLabelledSlider, []);
 
-        const onPlayMicrophoneClick = useCallback(() => {
-            setPlayState('loading-mic');
-            onRenderFromMicrophone();
-        }, [onRenderFromMicrophone, setPlayState]);
-
         const onPlayFileClick = useCallback(() => {
 
             setPlayState('loading-file');
-
-            initSound("348.wav").then(response => onRenderFromFile(response))
-
+            initSound("sw5_ok_comp.mp3").then(response => onRenderFromFile(response))
 
         }, [setPlayState, onRenderFromFile]);
 
-        // const onFileChange = useCallback(() => {
-        //     if (
-        //         fileRef.current === null ||
-        //         fileRef.current.files === null ||
-        //         fileRef.current.files.length !== 1
-        //     ) {
-        //         return;
-        //     }
-
-        //     const file = fileRef.current.files[0];
-        //     const reader = new FileReader();
-        //     setPlayState('loading-file');
-        //     reader.addEventListener('load', () => {
-        //         if (fileRef.current !== null) {
-        //             fileRef.current.value = '';
-        //         }
-
-        //         if (reader.result instanceof ArrayBuffer) {
-        //             onRenderFromFile(reader.result);
-        //         } else {
-        //             setPlayState('stopped');
-        //         }
-        //     });
-        //     reader.readAsArrayBuffer(file);
-        // }, [fileRef, setPlayState, onRenderFromFile]);
         const onStopClick = useCallback(() => {
             onStop();
             setPlayState('stopped');
@@ -314,28 +278,7 @@ function generateSettingsContainer(): [SettingsContainer, (playState: PlayState)
 
         const content = (
             <>
-                <div className={classes.buttonContainer}>
-                    <Button
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        onClick={onPlayMicrophoneClick}
-                        startIcon={<MicIcon />}
-                        disabled={playState !== 'stopped'}
-                    >
-                        Record from mic
-                    </Button>
-                    {playState === 'loading-mic' && (
-                        <CircularProgress size={24} className={classes.buttonProgress} />
-                    )}
-                </div>
-                {/* <input
-                    type="file"
-                    style={{ display: 'none' }}
-                    accept="audio/x-m4a,audio/*"
-                    onChange={onFileChange}
-                    ref={fileRef}
-                /> */}
+
                 <div className={classes.buttonContainer}>
                     <Button
                         fullWidth
@@ -365,7 +308,7 @@ function generateSettingsContainer(): [SettingsContainer, (playState: PlayState)
                 </Button>
 
                 <Divider className={classes.divider} />
-
+                {/* 
                 <SensitivitySlider
                     nameLabelId="sensitivity-slider-label"
                     nameLabel="Sensitivity"
@@ -437,16 +380,7 @@ function generateSettingsContainer(): [SettingsContainer, (playState: PlayState)
                             </MenuItem>
                         ))}
                     </Select>
-                </FormControl>
-                <Button
-                    fullWidth
-                    variant="text"
-                    color="secondary"
-                    onClick={onClearSpectrogram}
-                    startIcon={<ClearIcon />}
-                >
-                    Clear spectrogram
-                </Button>
+                </FormControl> */}
             </>
         );
 
