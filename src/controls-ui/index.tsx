@@ -23,6 +23,5 @@ export default function initialiseControlsUi(
         />,
         container
     );
-
     return setPlayState;
 }

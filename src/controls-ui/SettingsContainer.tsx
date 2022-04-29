@@ -36,12 +36,13 @@ import { RenderParameters } from '../spectrogram-render';
 
 import generateLabelledSlider from './LabelledSlider';
 
+
 const controlsTheme = createMuiTheme({
     palette: {
         type: 'dark',
         background: {
-            default: '#101010',
-            paper: '#222222',
+            default: 'transparent',
+            paper: 'transparent',
         },
         primary: {
             main: '#ffffff',
@@ -67,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: theme.spacing(1),
     },
     buttonProgress: {
-        color: pink[500],
+        color: '#b3c4bc',
         position: 'absolute',
         top: '50%',
         left: '50%',
@@ -153,8 +154,8 @@ function generateSettingsContainer(): [SettingsContainer, (playState: PlayState)
         onRenderFromFile,
     }: SettingsContainerProps) => {
         const { current: defaultParameters } = useRef({
-            sensitivity: 0.8,
-            contrast: 0.2,
+            sensitivity: 0.9,
+            contrast: 0.05,
             zoom: 4,
             minFrequency: 500,
             maxFrequency: 13000,
@@ -163,7 +164,7 @@ function generateSettingsContainer(): [SettingsContainer, (playState: PlayState)
         });
 
         const classes = useStyles();
-        const isMobile = useMediaQuery('(max-width: 800px)');
+        const isMobile = useMediaQuery('(max-width: 0px)');
         const [settingsOpen, setSettingsOpen] = useState(false);
 
         const openSettings = useCallback(() => setSettingsOpen(true), [setSettingsOpen]);
@@ -288,7 +289,7 @@ function generateSettingsContainer(): [SettingsContainer, (playState: PlayState)
                         startIcon={<AudiotrackIcon />}
                         disabled={playState !== 'stopped'}
                     >
-                        Play audio file
+                        Listen
                     </Button>
                     {playState === 'loading-file' && (
                         <CircularProgress size={24} className={classes.buttonProgress} />
