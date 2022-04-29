@@ -1,0 +1,376 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    overflow-y: hidden;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+}
+
+.spectrograms {
+    position: relative;
+    flex: 1 1 0;
+    background-image: url("./background_02.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-color: black; */
+}
+
+.spectrograms .spectrogram {
+    height: 30%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -130%);
+}
+
+.spectrograms .spectrogram canvas {
+    position: fixed;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    background-color: black;
+    opacity: 80%;
+    border-radius: 55px;
+    transform: translateX(-50%);
+    box-shadow: 0px 0px 90px 90px rgb(0 0 0);
+}
+
+.spectrograms .separator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 0px;
+}
+
+.spectrograms .spectrogram:first-child::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0px;
+}
+
+.spectrograms .separator,
+.spectrograms .spectrogram:first-child::after {
+    background: rgba(119, 119, 119, 0.25);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.spectrograms .spectrogram .label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 6px 12px;
+    color: #ffffff;
+    background: rgba(53, 53, 53, 0.75);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-bottom-right-radius: 3px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+
+.controls {
+    position: fixed;
+    box-sizing: border-box;
+    background-color: transparent;
+    left: 50%;
+    top: 50%;
+    flex: 0 0 auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: auto;
+    padding: 0;
+    z-index: 2;
+}
+
+
+@media only screen and (max-width: 600px) {
+    #wytham-logo {
+        width: 120px !important;
+        padding-bottom: 4px !important;
+        height: auto;
+    }
+
+    #oxford-logo {
+        width: auto;
+        height: 50px !important;
+
+        padding-left: 10px
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    #wytham-logo {
+        display: none;
+        width: 120px !important;
+        padding-bottom: 4px !important;
+        height: auto;
+    }
+
+    #oxford-logo {
+        display: none;
+        width: auto;
+        height: 50px !important;
+
+        padding-left: 10px
+    }
+}
+
+
+button.MuiScopedCssBaseline-root {
+    color: #fff;
+    font-size: 0.875rem;
+    box-sizing: border-box;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+    background-color: none !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+button.MuiButton-containedPrimary {
+    color: rgba(0, 0, 0, 0.87);
+    background-color: #9e9ebb88;
+    border-radius: 30px;
+}
+
+button.MuiButton-containedPrimary:hover {
+    background-color: #9e9ebb !important;
+}
+
+button.MuiButton-outlinedSecondary {
+    color: rgba(0, 0, 0, 0.87);
+    background-color: #9e9ebb88;
+    border: none !important;
+    border-radius: 30px;
+    margin-top: -4em;
+}
+
+button.MuiButton-outlinedSecondary:hover {
+    border: none !important;
+    background-color: #9e9ebb !important;
+}
+
+button.MuiButtonBase-root.Mui-disabled {
+    cursor: default;
+    pointer-events: none;
+    color: transparent;
+    background-color: transparent;
+}
+
+.MuiDivider-root {
+    border: none;
+    height: 0px !important;
+    margin: 0;
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+
+#wytham-logo {
+    width: 160px;
+    height: auto;
+    padding-bottom: 4px;
+}
+
+#oxford-logo {
+    width: auto;
+    height: 65px;
+    padding-bottom: 0px;
+    padding-left: 10px
+}
+
+.footerbar {
+    position: fixed;
+    bottom: 0;
+    right: 2.8em;
+    padding-bottom: 1em;
+    height: auto;
+    color: #dfdfdf;
+    background: none;
+}
+
+.content {
+    display: block;
+    padding: 10px;
+    margin: 0px auto;
+    text-align: center;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 14px;
+    color: #e0e0e0;
+    width: 100%;
+}
+
+.description {
+    display: block;
+    position: relative;
+    font-size: 1em;
+    left: 0;
+    color: rgba(196, 196, 196, 0.815);
+    font-weight: 500;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    width: 100%;
+}
+
+
+p.copyright {
+    position: fixed;
+    width: 100%;
+    color: rgba(196, 196, 196, 0.815);
+    line-height: 70px;
+    font-size: 0.8em;
+    font-weight: 300;
+    left: 2em;
+    bottom: -1em;
+}
+
+p.title {
+    position: fixed;
+    width: 100%;
+    color: rgba(196, 196, 196, 0.815);
+    line-height: 70px;
+    font-size: 1em;
+    font-weight: 500;
+    left: 2em;
+    bottom: -1em;
+}
+
+
+
+/* popup description */
+
+.box {
+    position: fixed;
+    bottom: 2em;
+    left: 2em;
+    width: auto;
+    margin: 0 auto;
+    background-clip: padding-box;
+    text-align: center;
+}
+
+.description-button {
+    font-size: 1.2em;
+    color: #fff;
+    color: rgba(196, 196, 196, 0.815);
+    font-weight: 500;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+.description-button:hover {
+    color: rgb(255, 255, 255);
+    font-weight: 800;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.521);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 3;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: transparent;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(221, 221, 221, 0.151);
+    width: fit-content;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+}
+
+/* @media only screen and (max-width: 1400px) {
+    .popup {
+        width: 50%
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .popup {
+        width: 70%
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .popup {
+        width: 85%
+    }
+} */
+
+
+.popup h2 {
+    margin-top: 0;
+    color: #e0e0e0;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.popup .content {
+    display: block;
+    margin: 0px auto;
+    text-align: left;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 1em;
+    color: #e0e0e0;
+    width: 100%;
+    padding-top: 2.5em;
+}
+
+
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.popup .close:hover {
+    color: rgb(255, 255, 255);
+}

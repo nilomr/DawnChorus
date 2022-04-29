@@ -1,143 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-        content="Real-time audio visualizer that generates spectrograms in your browser using WebGL. Visualise sound either from a microphone or an audio file on your device. Supports different color schemes and other customization options.">
+    <meta name="description" content="Real-time audio visualizer that generates spectrograms in
+            your browser using WebGL. Visualise sound either from a microphone
+            or an audio file on your device. Supports different color schemes
+            and other customization options.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://calebj0seph.github.io/spectro">
-    <meta property="og:title" content="Spectro: Real-time Spectrogram Generator">
+    <meta property="og:title" content="Dawn chorus in Wytham Woods">
     <meta property="og:image" content="https://calebj0seph.github.io/spectro/og-image.jpg">
-    <meta property="og:description"
-        content="Real-time audio visualizer that generates spectrograms in your browser using WebGL. Visualise sound either from a microphone or an audio file on your device.">
+    <meta property="og:description" content="A visualisation of the dawn chorus in Wytham Woods, UK.">
     <meta name="twitter:card" content="summary">
-    <title>Spectro</title>
+    <title>Dawn chorus in Wytham Woods</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            font-family: 'Roboto', sans-serif;
-            overflow-y: hidden;
-        }
 
-        .container {
-            height: 100%;
-            display: flex;
-        }
-
-        .spectrograms {
-            position: relative;
-            flex: 1 1 0;
-        }
-
-        .spectrograms .spectrogram {
-            height: 50%;
-            position: relative;
-        }
-
-        .spectrograms .spectrogram canvas {
-            width: 100%;
-            height: 100%;
-            background-color: black;
-        }
-
-        .spectrograms .separator {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 2px;
-        }
-
-        .spectrograms .spectrogram:first-child::after {
-            content: '';
-            display: block;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-        }
-
-        .spectrograms .separator,
-        .spectrograms .spectrogram:first-child::after {
-            background: rgba(119, 119, 119, 0.25);
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-        }
-
-        .spectrograms .spectrogram .label {
-            position: absolute;
-            top: 0;
-            left: 0;
-            font-size: 12px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: 6px 12px;
-            color: #ffffff;
-            background: rgba(53, 53, 53, 0.75);
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-            border-bottom-right-radius: 3px;
-            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
-        }
-
-        .controls {
-            box-sizing: border-box;
-            background-color: #101010;
-            padding: 16px;
-            width: 300px;
-            flex: 0 0 auto;
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-
-        @media (max-width: 800px) {
-            .spectrograms .separator {
-                display: none;
-            }
-
-            .controls {
-                border-top-left-radius: 16px;
-                border-top-right-radius: 16px;
-                position: fixed;
-                left: 50%;
-                transform: translateX(-50%);
-                bottom: 0;
-                width: auto;
-                padding: 0;
-            }
-        }
-    </style>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-159415440-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-159415440-1');
-    </script>
+    <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
     <div class="container">
         <div class="spectrograms">
             <div class="spectrogram">
                 <canvas id="leftSpectrogram"></canvas>
-                <div class="label">Left channel</div>
+                <!-- <div class="label">Wytham Woods, 5am</div> -->
             </div>
-            <div class="spectrogram">
-                <canvas id="rightSpectrogram"></canvas>
-                <div class="label">Right channel</div>
-            </div>
-            <div class="separator"></div>
         </div>
         <div class="controls"></div>
     </div>
+
     <script src="main.js"></script>
+
+    <!-- <p class="title">Wytham Woods, 5am</p>
+<p class="copyright">© Nilo M. Recalde 2022</p> -->
+
+    <div class="box">
+        <a class="description-button" href="#info">+ INFO</a>
+    </div>
+
+    <div id="info" class="overlay">
+        <div class="popup">
+
+            <a class="close" href="#">×</a>
+            <div class="content">
+                <h2>Wytham Woods, 5am</h2>
+                <b>Location:</b> Wytham Woods, Oxford<br>
+                <b>Datetime:</b> 14/04/2022 04:00 (UTC)<br>
+                <b>Duration:</b> 31m 37s<br>
+            </div>
+        </div>
+    </div>
+
+    <div class="footerbar">
+        <div class="content">
+            <a href='https://www.wythamwoods.ox.ac.uk/home'>
+                <img src="./wytham-logo.png" id='wytham-logo' />
+            </a>
+            <a href='https://www.biology.ox.ac.uk'>
+                <img src="./oxbio-logo.png" id='oxford-logo' />
+            </a>
+        </div>
+    </div>
+
+
 </body>
+
 </html>
