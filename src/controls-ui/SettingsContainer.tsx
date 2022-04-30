@@ -138,7 +138,9 @@ export type SettingsContainer = (props: SettingsContainerProps) => JSX.Element;
 
 
 async function initSound(url: string) {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+        credentials: "include"    // added this for safari 10
+    });
     return response.arrayBuffer();
 }
 
