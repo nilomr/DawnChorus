@@ -6,7 +6,7 @@ A desktop-only web visualisation of the April dawn chorus in [Wytham Woods](http
 
 Note: doesn't work in IE, some Samsung phones, older iPhones and iPads running Safari.
 
-![Screenshot of Spectro](/docs/screenshot.png)
+![Screenshot of website](/docs/readme-img.jpg)
 
 Based on [spectro](https://github.com/calebj0seph/spectro) by [@calebj0seph](https://github.com/calebj0seph)
 
