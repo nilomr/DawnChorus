@@ -4,14 +4,14 @@
   "description": "Real-time audio spectrogram generator for the web.",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode=production",
     "start": "webpack serve --mode=development",
     "prettier": "prettier --write 'src/**/*.{ts,tsx}'",
     "type-check": "tsc"
   },
-  "author": "Nilo M. Recalde (https://github.com/nilomr)",
+  "author": "Nilo M.Recalde (https://github.com/nilomr)",
   "license": "MIT",
   "homepage": "https://nilomr.github.io/DawnChorus",
   "bugs": "https://github.com/calebj0seph/spectro/issues",

@@ -5,12 +5,11 @@ export type Gradient = {
     color: [number, number, number];
 }[];
 
-// ANCHOR: colour palettes
-
 export const HEATED_METAL_GRADIENT: Gradient = [
     { stop: 0, color: [0, 0, 0] },
-    { stop: 0.5, color: [89, 90, 148] },
-    { stop: 0.85, color: [191, 190, 237] },
+    { stop: 0.3, color: [128, 0, 128] },
+    { stop: 0.65, color: [255, 0, 0] },
+    { stop: 0.9, color: [255, 255, 0] },
     { stop: 1.0, color: [255, 255, 255] },
 ];
 
