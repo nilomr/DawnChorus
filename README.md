@@ -1,6 +1,6 @@
 # Dawn Chorus in Wytham Woods
 
-*Click [here](https://nilomr.github.io/dawnchorus) to visit the site.*
+*Click [here](https://nilomr.github.io/DawnChorus/) to visit the site.*
 
 A desktop-only web visualisation of the April dawn chorus in [Wytham Woods](https://www.wythamwoods.ox.ac.uk/home), Oxford.
 
