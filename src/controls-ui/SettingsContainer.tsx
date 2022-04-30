@@ -184,7 +184,7 @@ function generateSettingsContainer(): [SettingsContainer, (playState: PlayState)
         const onPlayFileClick = useCallback(() => {
 
             setPlayState('loading-file');
-            initSound("sw5_ok_comp.mp3").then(response => onRenderFromFile(response))
+            initSound("dawn-chorus-wytham.mp3").then(response => onRenderFromFile(response))
 
         }, [setPlayState, onRenderFromFile]);
 
