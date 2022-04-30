@@ -125,6 +125,21 @@ body {
     }
 }
 
+@media only screen and (max-width: 400px) {
+    #wytham-logo {
+        width: 100px !important;
+        padding-bottom: 4px !important;
+        height: auto;
+    }
+
+    #oxford-logo {
+        width: auto;
+        height: 30px !important;
+
+        padding-left: 10px
+    }
+}
+
 @media only screen and (max-width: 380px) {
     #wytham-logo {
         display: none;
@@ -366,4 +381,20 @@ p.title {
     text-align: right;
     padding-right: 2em;
     margin-bottom: -0.5em;
+}
+
+
+.down-btn {
+    background-color: #616180;
+    border: none;
+    color: white;
+    padding: 9px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+/* Darker background on mouse-over */
+.down-btn:hover {
+    background-color: #434357;
 }
